@@ -22,9 +22,8 @@ namespace DatingApp.API.Controllers
         {
             this._config = config;
             this._repo = repo;
-
-
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
@@ -69,9 +68,16 @@ namespace DatingApp.API.Controllers
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
+
+        //  [HttpPost("reset")]
+        //  public async Task<IActionResult> Reset()
+        //  {
+        //      return Ok();
+        //  }
     }
 }
